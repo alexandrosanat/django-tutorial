@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "playground",
     "debug_toolbar",
+    "django.contrib.sites",
+    "django.contrib.sessions"
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
