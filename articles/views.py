@@ -16,6 +16,8 @@ def article_list(request):
         context={"articles": articles},
     )
 
-def article_detail(request, my_slug):
-    return HttpResponse(my_slug)
 
+def article_detail(request, my_slug):
+    article = Article.objects.get(slug=my_slug)
+    # return HttpResponse(article.body)
+    return render(request, "articles/article_detail.html", context={"article": article})

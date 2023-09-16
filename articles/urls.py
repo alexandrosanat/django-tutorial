@@ -9,5 +9,6 @@ app_name = 'articles'
 urlpatterns = [
     path("hello/", views.say_hello, name="hello"),
     re_path(r'^$', views.article_list, name="list"),
-    path('<slug:my_slug>/', views.article_detail, name="detail")
+     # Here we capture the variable slug and send it through to the view:
+    path('<slug:my_slug>/', views.article_detail, name="detail")  # Named Capturing Group
 ]
