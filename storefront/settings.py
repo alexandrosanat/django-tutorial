@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "articles",
     "debug_toolbar",
     "django.contrib.sites",
-    "django.contrib.sessions"
+    "django.contrib.sessions",
+    "accounts"
 ]
 
 SITE_ID = 1

@@ -25,6 +25,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     re_path(r"^articles/", include(articles.urls)),
     path("__debug__/", include(debug_toolbar.urls)),
+    # We don't put the trailing $ here as this is not the end of the url
+    re_path(r"^accounts/", include("accounts.urls")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
