@@ -16,4 +16,6 @@ def article_list(request):
         context={"articles": articles},
     )
 
+def article_detail(request, my_slug):
+    return HttpResponse(my_slug)
 
