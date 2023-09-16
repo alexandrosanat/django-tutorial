@@ -15,3 +15,5 @@ def article_list(request):
         template_name="articles/article_list.html",
         context={"articles": articles},
     )
+
+
