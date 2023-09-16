@@ -17,11 +17,14 @@ Including another URLconf
 import debug_toolbar
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-import playground.urls
+import articles.urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("playground/", include(playground.urls)),
+    path("articles/", include(articles.urls)),
     path("__debug__/", include(debug_toolbar.urls)),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
