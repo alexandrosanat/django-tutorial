@@ -29,7 +29,10 @@ def article_create(request):
     if request.method == "POST":
         form = forms.CreateArticle(request.POST)
         if form.is_valid():
-            # save article to db
+            instance = form.save(commit=False)
+            # Attach author to instance of article
+            instance.author = request.user
+            instance.save()
             return redirect("articles:list")
     else:
         form = forms.CreateArticle()

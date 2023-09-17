@@ -13,7 +13,7 @@ def signup_view(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Registration successful. You can now log in.")
-            return redirect('accounts:login')  # Redirect to the login page
+            return redirect("accounts:login")  # Redirect to the login page
     else:
         # If it's a GET request then go to the forms
         form = UserCreationForm()
@@ -36,7 +36,7 @@ def login_view(request):
             messages.success(request, "Login successful.")
 
             if "next" in request.POST:
-                return redirect(request.POST.get('next'))
+                return redirect(request.POST.get("next"))
             else:
                 return redirect("articles:list")
         else:
@@ -51,4 +51,6 @@ def logout_view(request):
     if request.method == "POST":
         # Use the logout() function to log the user out
         logout(request)
-    return redirect("articles:list")  # Redirect to the home page or any desired page after logout
+    return redirect(
+        "articles:list"
+    )  # Redirect to the home page or any desired page after logout

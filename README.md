@@ -14,7 +14,8 @@
 ## Launch Server:
 ```python manage.py runserver <port>```
 
-## Launch Server:
+## Make Changes to Models:
 ```python manage.py makemigrations```
 
 ```python manage.py migrate```
+
