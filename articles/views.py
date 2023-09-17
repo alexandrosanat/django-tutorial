@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
 from django.contrib.auth.decorators import login_required
+from . import forms
+
 
 # In Django views are request handlers or Actions
 def say_hello(request):
@@ -24,4 +26,11 @@ def article_detail(request, my_slug):
 
 @login_required(login_url="/accounts/login/")  # This decorator protects this view
 def article_create(request):
-    return render(request, "articles/article_create.html")
+    if request.method == "POST":
+        form = forms.CreateArticle(request.POST)
+        if form.is_valid():
+            # save article to db
+            return redirect("articles:list")
+    else:
+        form = forms.CreateArticle()
+    return render(request, "articles/article_create.html", context={"form": form})
