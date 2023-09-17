@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Article
-
+from django.contrib.auth.decorators import login_required
 
 # In Django views are request handlers or Actions
 def say_hello(request):
@@ -21,3 +20,8 @@ def article_detail(request, my_slug):
     article = Article.objects.get(slug=my_slug)
     # return HttpResponse(article.body)
     return render(request, "articles/article_detail.html", context={"article": article})
+
+
+@login_required(login_url="/accounts/login/")  # This decorator protects this view
+def article_create(request):
+    return render(request, "articles/article_create.html")

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
@@ -34,10 +34,21 @@ def login_view(request):
             # Log the user in
             login(request, user)
             messages.success(request, "Login successful.")
-            return redirect("articles:list")
+
+            if "next" in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect("articles:list")
         else:
             messages.error(request, "Invalid username or password.")
 
     # If the request method is GET or authentication failed, display login form
     form = AuthenticationForm()
     return render(request, "accounts/login.html", {"form": form})
+
+
+def logout_view(request):
+    if request.method == "POST":
+        # Use the logout() function to log the user out
+        logout(request)
+    return redirect("articles:list")  # Redirect to the home page or any desired page after logout
