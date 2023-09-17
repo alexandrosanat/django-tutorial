@@ -18,6 +18,7 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from articles import views as article_views
 
 import articles.urls
 
@@ -27,6 +28,7 @@ urlpatterns = [
     path("__debug__/", include(debug_toolbar.urls)),
     # We don't put the trailing $ here as this is not the end of the url
     re_path(r"^accounts/", include("accounts.urls")),
+    path("", article_views.article_list, name="home"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
