@@ -19,3 +19,7 @@
 
 ```python manage.py migrate```
 
+## Update Static Files
+
+```python manage.py collectstatic```
+
