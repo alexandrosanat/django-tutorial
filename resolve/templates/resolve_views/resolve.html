@@ -1,2 +1,25 @@
-{% extends "base_layout.html" %}
+{% extends 'base_layout.html' %}
 
+{% block content %}
+  <div class="container my-5" style="height: 100vh;">
+    <div class="row justify-content-center align-items-center">
+      <h3>Welcome to my tool!</h3>
+
+      <!-- First Column -->
+      <div class="col-md-6 my-2">
+        <div class="form-group">
+          <label for="inputField">Input:</label>
+          <input type="text" class="form-control" id="inputField" placeholder="Enter something..." />
+        </div>
+      </div>
+
+      <!-- Second Column -->
+      <div class="col-md-6 my-2">
+        <div class="form-group">
+          <label for="inputField">Output:</label>
+          <input type="text" class="form-control" id="inputField" placeholder="Enter something..." />
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
