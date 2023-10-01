@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "django.contrib.sites",
     "django.contrib.sessions",
-    "accounts"
+    "accounts",
+    "resolve"
 ]
 
 SITE_ID = 1
