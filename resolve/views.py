@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -22,3 +23,8 @@ def resolve_main(request):
         "resolve_views/resolve.html",
         {"user_input": user_input, "output": output},
     )
+
+
+def resolve_unused(request):
+    response_string = "Hello, this is a simple HttpResponse string!"
+    return HttpResponse(response_string)

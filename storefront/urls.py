@@ -16,21 +16,19 @@ Including another URLconf
 """
 import debug_toolbar
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from articles import views as article_views
-from resolve import views as resolve_views
 
-import articles.urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    re_path(r"^articles/", include(articles.urls)),
+    # re_path(r"^articles/", include(articles.urls)),
     path("__debug__/", include(debug_toolbar.urls)),
     # We don't put the trailing $ here as this is not the end of the url
-    re_path(r"^accounts/", include("accounts.urls")),
-    path("", article_views.article_list, name="home"),
-    path("resolve", resolve_views.resolve_main, name="resolve_main"),
+    # re_path(r"^accounts/", include("accounts.urls")),
+    # path("", article_views.article_list, name="home"),
+    # path("resolve", resolve_views.resolve_main, name="resolve_main"),
+    path("", include("resolve.urls")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
