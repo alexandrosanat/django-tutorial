@@ -8,25 +8,48 @@
       <!-- First Column -->
       <div class="col-md-6 my-2">
         <div class="form-group">
-			<form method="post">
-				{% csrf_token %}
+          <form method="post">
+            {% csrf_token %}
 
-          <label for="inputField">Input:</label>
-          <input type="text" class="form-control" id="inputField" placeholder="Enter something..." />
-		  <br>
-		  <input type="submit" value="Submit">
-		</form>
-
-		</div>
+            <h5 for="inputField1">Input:</h5>
+            <input type="text" class="form-control" id="inputField1" name="user_input" placeholder="Enter something..." value="{{ user_input }}" />
+            <br />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
       </div>
 
       <!-- Second Column -->
       <div class="col-md-6 my-2">
         <div class="form-group">
-          <label for="inputField">Output:</label>
-          <input type="text" class="form-control" id="inputField" placeholder="Enter something..." />
+          <div class="card-body">
+            <h5 class="card-title">Output:</h5>
+            <p class="card-text" id="output-text"></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    // JavaScript code to stream output letter by letter
+    var outputText = document.getElementById("output-text");
+    var outputContent = "{{ output }}"; // Content to be streamed
+
+    function streamOutput() {
+      var i = 0;
+      var interval = setInterval(function() {
+        if (i < outputContent.length) {
+          outputText.innerHTML += outputContent.charAt(i);
+          i++;
+        } else {
+          clearInterval(interval); // Stop streaming when done
+        }
+      }, 100); // Adjust the interval as needed for the desired speed
+    }
+
+    // Call the streamOutput function when the page loads
+    window.addEventListener("load", streamOutput);
+  </script>
+
 {% endblock %}
