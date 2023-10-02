@@ -22,12 +22,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # re_path(r"^articles/", include(articles.urls)),
     path("__debug__/", include(debug_toolbar.urls)),
-    # We don't put the trailing $ here as this is not the end of the url
-    # re_path(r"^accounts/", include("accounts.urls")),
-    # path("", article_views.article_list, name="home"),
-    # path("resolve", resolve_views.resolve_main, name="resolve_main"),
     path("", include("resolve.urls")),
 ]
 
