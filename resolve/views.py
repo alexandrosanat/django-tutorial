@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -17,7 +16,6 @@ def resolve_main(request):
 
         # Manipulate the user input before displaying it
         output = manipulate_input(user_input)
-
 
     return render(
         request,
